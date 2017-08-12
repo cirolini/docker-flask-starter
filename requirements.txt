@@ -1,0 +1,5 @@
+flask
+flask-mysql
+redis
+python-memcached
+pymongo

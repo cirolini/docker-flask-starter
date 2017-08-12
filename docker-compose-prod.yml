@@ -1,0 +1,12 @@
+version: "3"
+services:
+  app:
+    environment:
+        MYSQL_HOST: PROD
+        MYSQL_ROOT_PASSWORD: PROD
+        MYSQL_DATABASE: PROD
+        MYSQL_USER: PROD
+        MYSQL_PASSWORD: PROD
+        MONGO_HOST: PROD
+        REDIS_HOST: PROD
+        MEMCACHE_HOST: PROD

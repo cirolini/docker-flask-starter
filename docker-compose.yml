@@ -1,0 +1,72 @@
+version: "3"
+services:
+  web:
+    build:
+      context: ./nginx/
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    networks:
+      - webnet
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+        MYSQL_HOST: mysql
+        MYSQL_ROOT_PASSWORD: EXAMPLE
+        MYSQL_DATABASE: TEST
+        MYSQL_USER: TEST
+        MYSQL_PASSWORD: TEST
+        MONGO_HOST: mongodb
+        REDIS_HOST: redis
+        MEMCACHE_HOST: memcache:11211
+    networks:
+      - webnet
+
+  redis:
+    image: redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - ./data-redis:/data
+    networks:
+      - webnet
+
+  memcached:
+    image: memcached
+    ports:
+      - "11211:11211"
+    networks:
+      - webnet
+
+  mysql:
+    build:
+      context: ./mysql/
+      dockerfile: Dockerfile
+    environment:
+        MYSQL_ROOT_PASSWORD: EXAMPLE
+        MYSQL_DATABASE: TEST
+        MYSQL_USER: TEST
+        MYSQL_PASSWORD: TEST
+    volumes:
+      - ./data-mysql:/var/lib/mysql
+    networks:
+      - webnet
+
+  mongodb:
+      image: mongo
+      environment:
+        - MONGO_DATA_DIR=/data/db
+      volumes:
+        - ./data-mongo:/data/db
+      ports:
+        - 27017:27017
+      networks:
+        - webnet
+
+networks:
+  webnet:
