@@ -8,7 +8,7 @@ WORKDIR /app
 ADD . /app
 
 # Install any needed packages specified in requirements.txt
-RUN pip install -r requirements.txt --proxy="https://proxy-mia.tpn.terra.com:3128"
+RUN pip install -r requirements.txt
 
 # Make port 8080 available to the world outside this container
 EXPOSE 8080
