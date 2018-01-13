@@ -15,7 +15,7 @@ MYSQL_USER = os.getenv("MYSQL_USER", "TEST")
 MYSQL_PASSWORD = os.getenv("MYSQL_PASSWORD", "TEST")
 MONGO_HOST = os.getenv("MONGO_HOST", "mongodb")
 REDIS_HOST = os.getenv("REDIS_HOST", "redis")
-MEMCACHE_HOST = os.getenv("MEMCACHE_HOST", "memcache")
+MEMCACHE_HOST = os.getenv("MEMCACHE_HOST", "memcached")
 
 app = Flask(__name__)
 
