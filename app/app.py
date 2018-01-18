@@ -57,7 +57,7 @@ def hello():
         mongo_db.test.insert({"value": 1});
         mongo_result = mongo_db.test.find_one();
     except:
-        print "ERROR"
+        print("ERROR")
 
 
     html = "<h3>Hello {name}!</h3>" \
